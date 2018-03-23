@@ -5,7 +5,7 @@ import java.util.*;
 import javax.swing.*;
 
 public class GCodeCompressor {
-	private final static String VERSION = "1.0";
+	private final static String VERSION = "1.0.1";
 
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
@@ -89,11 +89,10 @@ public class GCodeCompressor {
 						if(exception) JOptionPane.showMessageDialog(null, "WARNING\nEXCEPTION DURING PROCESSING");
 						else if(inputLen > 0 && outputLen > 0) {
 							long diff = inputLen - outputLen;
-							System.out.println("Removed chars: " + diff);
 							double percent = 100.0 * diff / inputLen;
-							System.out.println("Ratio: " + String.format("%.2f", percent) + "%");
+							System.out.println("Removed chars: " + diff + " (" + String.format("%.2f", percent) + "%)");
 
-							JOptionPane.showMessageDialog(null, "Input length: " + inputLen + "\nOutput length: " + outputLen + "\nRemoved chars: " + diff + "\nRatio: " + String.format("%.2f", percent) + "%");
+							JOptionPane.showMessageDialog(null, "Input length: " + inputLen + "\nOutput length: " + outputLen + "\nRemoved chars: " + diff + " (" + String.format("%.2f", percent) + "%)");
 						}
 						else JOptionPane.showMessageDialog(null, "WARNING\nInput length: " + inputLen + "\nOutput length: " + outputLen);
 					}
